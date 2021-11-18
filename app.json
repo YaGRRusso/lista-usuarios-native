@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Cad",
+    "slug": "Cad",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Cad"
+}
