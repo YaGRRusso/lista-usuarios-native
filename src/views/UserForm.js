@@ -1,10 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Text, View, TextInput, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { Button, Icon } from 'react-native-elements'
 
+import UsersContext from '../context/UserContext'
+
 export default (props) => {
     const [user, setUser] = useState(props.route.params ? props.route.params : {})
+    const {dispatch} = useContext(UsersContext)
+
     return (
         <View style={style.form}>
             <Text style={style.txt}>Nome:</Text>
@@ -33,6 +37,11 @@ export default (props) => {
                 type = 'clear'
                 icon = {<Icon name='save' size={30} color='#368BB0'/>}
                 onPress={() => {
+                    dispatch({
+                        type: user.id ? 'updateUser' : 'createUser',
+                        payload: user,
+                        
+                    })
                     props.navigation.goBack()
                 }}
             />
